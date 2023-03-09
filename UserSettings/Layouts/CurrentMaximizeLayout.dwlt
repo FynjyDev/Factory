@@ -227,7 +227,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0a36fbff1c7bfbff3c88feff16fbfffff65c0000
+      m_ExpandedIDs: 7a57faff7e57faff0e58faff6c7afaff0a36fbff1c7bfbff3c88feff16fbfffff65c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -529,9 +529,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.633359, y: -3.042263, z: 18.41182}
+    m_Target: {x: 5.0796123, y: 1.2486286, z: 11.4035635}
     speed: 2
-    m_Value: {x: 4.633359, y: -3.042263, z: 18.41182}
+    m_Value: {x: 5.0796123, y: 1.2486286, z: 11.4035635}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -578,13 +578,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.23801066, y: 0.0035158568, z: -0.0009100738, w: 0.97129565}
+    m_Target: {x: 0.26406625, y: 0.02374009, z: -0.006560883, w: 0.96423095}
     speed: 2
-    m_Value: {x: 0.23945642, y: 0.0049706968, z: -0.0012744983, w: 0.97089356}
+    m_Value: {x: 0.26260924, y: 0.02374897, z: -0.0065250024, w: 0.96458787}
   m_Size:
-    m_Target: 9.196028
+    m_Target: 4.860597
     speed: 2
-    m_Value: 9.196028
+    m_Value: 4.860597
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -742,21 +742,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Settings
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Settings
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity (Projects)\Factory
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e85f0000
-    m_LastClickedID: 24552
+    m_SelectedIDs: f25f0000
+    m_LastClickedID: 24562
     m_ExpandedIDs: 00000000ce5f0000d05f0000d25f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
