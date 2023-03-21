@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    private SingletonController singletonController => SingletonController.singletonController;
+
     public Animator characterAnimator;
     public Transform characterTr;
     public Rigidbody characterBody;
 
-    public Joystick joystick => SingletonController.singletonController.UIController.characterJoystick;
-    private float _MoveSpeed => SingletonController.singletonController.config.characterMoveSpeed;
-    private float _RotateSpeed => SingletonController.singletonController.config.characterRotateSpeed;
-
     private Vector3 _InputVector;
+    public Joystick joystick => singletonController.UIController.characterJoystick;
+    private float _MoveSpeed => singletonController.config.characterMoveSpeed;
+    private float _RotateSpeed => singletonController.config.characterRotateSpeed;
 
     private void FixedUpdate()
     {
