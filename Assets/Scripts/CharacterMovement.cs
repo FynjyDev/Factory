@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -7,9 +5,10 @@ public class CharacterMovement : MonoBehaviour
     public Animator characterAnimator;
     public Transform characterTr;
     public Rigidbody characterBody;
-    public Joystick joystick;
-    public float moveSpeed;
-    public float rotateSpeed;
+
+    public Joystick joystick => SingletonController.singletonController.UIController.characterJoystick;
+    private float _MoveSpeed => SingletonController.singletonController.config.characterMoveSpeed;
+    private float _RotateSpeed => SingletonController.singletonController.config.characterRotateSpeed;
 
     private Vector3 _InputVector;
 
@@ -24,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
         _InputVector.x = joystick.Horizontal;
         _InputVector.z = joystick.Vertical;
 
-        characterBody.velocity = _InputVector * moveSpeed;
+        characterBody.velocity = _InputVector * _MoveSpeed;
         characterAnimator.SetBool("IsRun", _InputVector != Vector3.zero);
     }
 
@@ -33,6 +32,6 @@ public class CharacterMovement : MonoBehaviour
         if (_InputVector == Vector3.zero) return;
 
         characterTr.rotation = Quaternion.Lerp(characterTr.rotation, 
-            Quaternion.LookRotation(new Vector3(_InputVector.x, 0, _InputVector.z)), rotateSpeed);
+            Quaternion.LookRotation(new Vector3(_InputVector.x, 0, _InputVector.z)), _RotateSpeed);
     }
 }
