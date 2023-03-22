@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManualConveyor : MonoBehaviour
+public class ManualConveyor : Conveyor
 {
-
+    
 }
