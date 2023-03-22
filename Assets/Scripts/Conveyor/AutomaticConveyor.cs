@@ -8,5 +8,4 @@ public class AutomaticConveyor : Conveyor
     {
         StartCoroutine(Working());
     }
-
 }
