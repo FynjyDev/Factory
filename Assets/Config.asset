@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMoveSpeed: 4.5
   characterRotateSpeed: 0.2
+  spawnDelay: 2
+  moveSpeed: 1

@@ -6,22 +6,23 @@ public class Conveyor : MonoBehaviour
 {
     public SingletonController singletonController => SingletonController.singletonController;
 
-    public GameObject itemPrefab;
-    public Transform itemSpawnPos;
+    public ItemMoving itemPrefab;
+    public List<PathPoint> convoyerPathPoints;
 
-    public float spawnDelay;
+    private float _SpawnDelay => singletonController.config.spawnDelay;
 
     public IEnumerator Working()
     {
         while (true)
         {
             SpawnItem();
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(_SpawnDelay);
         }
     }
 
     public virtual void SpawnItem()
     {
-        Instantiate(itemPrefab, itemSpawnPos.position, Quaternion.identity);
+       ItemMoving _newItem = Instantiate(itemPrefab, convoyerPathPoints[0].transform.position, Quaternion.identity);
+        _newItem.convoyerPathPoints = convoyerPathPoints;
     }
 }
