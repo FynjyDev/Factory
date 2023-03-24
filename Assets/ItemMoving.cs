@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ItemMoving : MonoBehaviour
 {
-    public List<PathPoint> convoyerPathPoints;
+    [HideInInspector] public List<PathPoint> convoyerPathPoints;
+    public Rigidbody itemBody;
     public bool isMovingEnd;
 
     private Transform _ItemTr;
@@ -20,7 +21,7 @@ public class ItemMoving : MonoBehaviour
 
     private void Move()
     {
-        if (_TempPointIndex >= convoyerPathPoints.Count) isMovingEnd = true;
+        if (_TempPointIndex >= convoyerPathPoints.Count) EnableGraviry();
         else
         {
             _ItemTr.position = Vector3.MoveTowards(transform.position, convoyerPathPoints[_TempPointIndex].transform.position, _MoveSpeed * Time.deltaTime);
@@ -28,5 +29,12 @@ public class ItemMoving : MonoBehaviour
             float _distanceToPoint = (_ItemTr.position - convoyerPathPoints[_TempPointIndex].transform.position).sqrMagnitude;
             if (_distanceToPoint <= _MinDistanceToPoint) _TempPointIndex++;
         }
+    }
+
+    private void EnableGraviry()
+    {
+        isMovingEnd = true;
+        itemBody.isKinematic = false;
+        itemBody.useGravity = true;
     }
 }
