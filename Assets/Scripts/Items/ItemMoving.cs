@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemMoving : MonoBehaviour
 {
     [HideInInspector] public List<PathPoint> convoyerPathPoints;
+    public DestroyTimer destroyTimer;
     public Rigidbody itemBody;
     public bool isMovingEnd;
 
@@ -36,5 +37,7 @@ public class ItemMoving : MonoBehaviour
         isMovingEnd = true;
         itemBody.isKinematic = false;
         itemBody.useGravity = true;
+
+        destroyTimer.isDestroyEnabled = true;
     }
 }

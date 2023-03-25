@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7362152065635488972}
   - component: {fileID: -3856798223245532821}
   - component: {fileID: -7774891607109987656}
+  - component: {fileID: -9075618635911370231}
   - component: {fileID: -5090643554639833197}
   - component: {fileID: -7962279371421838237}
   - component: {fileID: 5736988340591432951}
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   convoyerPathPoints: []
+  destroyTimer: {fileID: -9075618635911370231}
   itemBody: {fileID: 5736988340591432951}
   isMovingEnd: 0
 --- !u!114 &-7774891607109987656
@@ -64,6 +66,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047c5913126db194ab9d79a900ddfa8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9075618635911370231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2997939599769975752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c21e3bffb8f044d90f95b9e0bcfdaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 1245617385942103304}
+  destroyTime: 12
+  blinkStartTime: 5
+  blinkSpeed: 2.5
+  endColor: {r: 1, g: 1, b: 1, a: 0}
+  isDestroyEnabled: 0
 --- !u!65 &-5090643554639833197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -166,5 +186,10 @@ PrefabInstance:
 --- !u!4 &72759860302630503 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 257a9f8a83e15914c94fc94f923b59c6, type: 3}
+  m_PrefabInstance: {fileID: 470845824570730892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1245617385942103304 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 257a9f8a83e15914c94fc94f923b59c6, type: 3}
   m_PrefabInstance: {fileID: 470845824570730892}
   m_PrefabAsset: {fileID: 0}
