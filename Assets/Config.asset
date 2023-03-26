@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterMoveSpeed: 4.5
   characterRotateSpeed: 0.2
-  spawnDelay: 2
+  basicConveyorSpawnDelay: 2
+  automaticConveyorSpawnDelay: 6
+  manualConveyorSpawnDelay: 3
   moveSpeed: 1

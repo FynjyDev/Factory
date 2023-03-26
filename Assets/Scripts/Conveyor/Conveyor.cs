@@ -10,14 +10,14 @@ public class Conveyor : MonoBehaviour
     public List<PathPoint> convoyerPathPoints;
     public List<ItemMoving> activeItems;
 
-    private float _SpawnDelay => singletonController.config.spawnDelay;
+    private float _BasicSpawnDelay => singletonController.config.basicConveyorSpawnDelay;
 
-    public IEnumerator Working()
+    public virtual IEnumerator Working()
     {
         while (true)
         {
             SpawnItem();
-            yield return new WaitForSeconds(_SpawnDelay);
+            yield return new WaitForSeconds(_BasicSpawnDelay);
         }
     }
 

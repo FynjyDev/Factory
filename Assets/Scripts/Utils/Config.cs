@@ -7,8 +7,15 @@ public class Config : ScriptableObject
     public float characterMoveSpeed;
     public float characterRotateSpeed;
 
-    [Header("Conveyor Pharameters")]
-    public float spawnDelay;
+    [Header("Basic Conveyor Pharameters")]
+    public float basicConveyorSpawnDelay;
+
+    [Header("Automatic Conveyor Pharameters")]
+    public float automaticConveyorSpawnDelay;
+
+    [Header("Manual Conveyor Pharameters")]
+    public float manualConveyorSpawnDelay;
+
 
     [Header("Item Pharameters")]
     public float moveSpeed;
