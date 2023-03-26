@@ -8,4 +8,9 @@ public class AutomaticConveyor : Conveyor
     {
         StartCoroutine(Working());
     }
+
+    public override void OnItemEndPath(ItemMoving _item)
+    {
+        _item.itemCollision.OnCollect();
+    }
 }

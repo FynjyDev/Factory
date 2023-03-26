@@ -8,6 +8,7 @@ public class Conveyor : MonoBehaviour
 
     public ItemMoving itemPrefab;
     public List<PathPoint> convoyerPathPoints;
+    public List<ItemMoving> activeItems;
 
     private float _SpawnDelay => singletonController.config.spawnDelay;
 
@@ -22,7 +23,16 @@ public class Conveyor : MonoBehaviour
 
     public virtual void SpawnItem()
     {
-       ItemMoving _newItem = Instantiate(itemPrefab, convoyerPathPoints[0].transform.position, Quaternion.identity);
+        ItemMoving _newItem = Instantiate(itemPrefab, convoyerPathPoints[0].transform.position, Quaternion.identity);
         _newItem.convoyerPathPoints = convoyerPathPoints;
+
+        _newItem.itemCollision.conveyor = this;
+
+        activeItems.Add(_newItem);
+    }
+
+    public virtual void OnItemEndPath(ItemMoving _item)
+    {
+
     }
 }

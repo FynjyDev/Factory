@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   convoyerPathPoints: []
+  itemCollision: {fileID: -7774891607109987656}
   destroyTimer: {fileID: -9075618635911370231}
   itemBody: {fileID: 5736988340591432951}
   isMovingEnd: 0
@@ -66,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047c5913126db194ab9d79a900ddfa8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conveyor: {fileID: 0}
+  itemMoving: {fileID: -3856798223245532821}
 --- !u!114 &-9075618635911370231
 MonoBehaviour:
   m_ObjectHideFlags: 0

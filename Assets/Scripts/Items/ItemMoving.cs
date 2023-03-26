@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemMoving : MonoBehaviour
 {
     [HideInInspector] public List<PathPoint> convoyerPathPoints;
+    public ItemCollision itemCollision;
     public DestroyTimer destroyTimer;
     public Rigidbody itemBody;
     public bool isMovingEnd;
@@ -22,7 +23,7 @@ public class ItemMoving : MonoBehaviour
 
     private void Move()
     {
-        if (_TempPointIndex >= convoyerPathPoints.Count) EnableGraviry();
+        if (_TempPointIndex >= convoyerPathPoints.Count) OnPathEnd();
         else
         {
             _ItemTr.position = Vector3.MoveTowards(transform.position, convoyerPathPoints[_TempPointIndex].transform.position, _MoveSpeed * Time.deltaTime);
@@ -32,8 +33,10 @@ public class ItemMoving : MonoBehaviour
         }
     }
 
-    private void EnableGraviry()
+    private void OnPathEnd()
     {
+        itemCollision.conveyor.OnItemEndPath(this);
+
         isMovingEnd = true;
         itemBody.isKinematic = false;
         itemBody.useGravity = true;
