@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemCollision : MonoBehaviour, Interactable
 {
     [HideInInspector] public Conveyor conveyor;
+    public DataController.ItemTypes itemType;
     public ItemMoving itemMoving;
 
     public void OnInteractEnd()
@@ -18,6 +17,7 @@ public class ItemCollision : MonoBehaviour, Interactable
 
     public void OnCollect()
     {
+        itemMoving.singletonController.dataController.ChangeItemData(itemType, 1);
         conveyor.activeItems.Remove(itemMoving);
         Destroy(gameObject);
     }

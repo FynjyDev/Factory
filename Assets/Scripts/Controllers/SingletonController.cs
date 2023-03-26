@@ -6,6 +6,7 @@ public class SingletonController : MonoBehaviour
 
     public Config config;
     public UIController UIController;
+    public DataController dataController;
 
     private void Awake()
     {

@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class ItemMoving : MonoBehaviour
 {
+    public SingletonController singletonController => SingletonController.singletonController;
     [HideInInspector] public List<PathPoint> convoyerPathPoints;
+
     public ItemCollision itemCollision;
     public DestroyTimer destroyTimer;
     public Rigidbody itemBody;
+
     public bool isMovingEnd;
 
     private Transform _ItemTr;
     private float _MinDistanceToPoint;
     private int _TempPointIndex;
 
-    private float _MoveSpeed => SingletonController.singletonController.config.moveSpeed;
+    private float _MoveSpeed => singletonController.config.moveSpeed;
 
     private void FixedUpdate()
     {
