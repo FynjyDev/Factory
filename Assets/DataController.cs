@@ -6,10 +6,14 @@ public class DataController : MonoBehaviour
     public enum ItemTypes { box, coin }
     public List<ItemData> itemsData;
 
+    private UIController UIController => SingletonController.singletonController.UIController;
+
     public void ChangeItemData(ItemTypes _itemType, int _changeValue)
     {
         ItemData _data = FindDataByType(_itemType);
         _data.itemCount += _changeValue;
+
+        UIController.UpdateDataPanel(_itemType, _data.itemCount);
     }
 
     public ItemData FindDataByType(ItemTypes _itemType)
