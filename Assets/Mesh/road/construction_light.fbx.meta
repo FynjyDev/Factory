@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: d185edf52ab7918418ae17d89a35d6f4
+guid: a8c94b29a52765149ac8ac6ed8e6b290
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey
-    second: {fileID: 2100000, guid: 4fbba0e417aece64cb62680d2c329fdc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey-dark
-    second: {fileID: 2100000, guid: fbcfefa34fa3681489ebafbb43bb3d2c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: striping
-    second: {fileID: 2100000, guid: 60a605d4c02363541a2f15b78f1aef1d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -50,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -103,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1.5
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
