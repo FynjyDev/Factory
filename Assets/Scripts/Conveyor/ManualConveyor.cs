@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManualConveyor : Conveyor, Interactable
+public class ManualConveyor : Conveyor, IInteractable
 {
     private float _ManualConveyorSpawnDelay => singletonController.config.manualConveyorSpawnDelay;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemCollision : MonoBehaviour, Interactable
+public class ItemCollision : MonoBehaviour, IInteractable
 {
     [HideInInspector] public Conveyor conveyor;
     public DataController.ItemTypes itemType;

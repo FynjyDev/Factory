@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CharacterCollision : MonoBehaviour
 {
-    public Interactable activeInteractableObject;
+    public IInteractable activeInteractableObject;
     private void OnTriggerEnter(Collider other)
     {
-        activeInteractableObject = other.GetComponent<Interactable>();
+        activeInteractableObject = other.GetComponent<IInteractable>();
 
         if (activeInteractableObject != null) activeInteractableObject.OnInteractStart();
     }
