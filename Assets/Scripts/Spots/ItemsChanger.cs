@@ -7,7 +7,7 @@ public class ItemsChanger : MonoBehaviour, IInteractable
     public DataController.ItemTypes takeItemType;
     public DataController.ItemTypes giveItemType;
 
-    public int tempItemCount;
+    public int tempItemCount = 0;
 
     private DataController _DataController => SingletonController.singletonController.dataController;    
     private float _SellDelay => SingletonController.singletonController.config.changeDelay;
@@ -19,11 +19,7 @@ public class ItemsChanger : MonoBehaviour, IInteractable
 
     private IEnumerator Change()
     {
-        ItemData _itemData = _DataController.FindDataByType(takeItemType);
-
-        if (_itemData.itemCount > 0) yield return null;
-
-        while (_itemData.itemCount > 0)
+        while (_DataController.FindDataByType(takeItemType).itemCount > 0)
         {
             float _sellDelayTemp = _SellDelay;
 
@@ -38,9 +34,9 @@ public class ItemsChanger : MonoBehaviour, IInteractable
 
     public virtual void OnChange()
     {
+        tempItemCount++;
         _DataController.ChangeItemData(takeItemType, -1);
         _DataController.ChangeItemData(giveItemType, 1);
-        tempItemCount++;
     }
 
     public virtual void OnInteractEnd()

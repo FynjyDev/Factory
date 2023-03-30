@@ -7,7 +7,7 @@ public class SingletonController : MonoBehaviour
     public Config config;
     public UIController UIController;
     public DataController dataController;
-
+    public SaveLoadSystem saveLoadSystem;
     private void Awake()
     {
         if (!singletonController) singletonController = this;

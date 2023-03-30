@@ -19,13 +19,14 @@ public class DeliverySpot : ItemsChanger
 
     public override void OnChange()
     {
-        if (tempItemCount >= _MaxItemsCount)
+        base.OnChange();
+
+        if (tempItemCount == _MaxItemsCount)
         {
             StopAllCoroutines();
             StartCoroutine(DeliverTimer());
             return;
         }
-        base.OnChange();
     }
 
     private IEnumerator DeliverTimer()
