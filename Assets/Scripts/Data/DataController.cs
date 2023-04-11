@@ -35,23 +35,13 @@ public class DataController : MonoBehaviour
 
     private void LoadAllData()
     {
-        SaveData _saveData = _SaveLoadSystem.Load();
-        ItemData _loadInfo = new ItemData();
+        List<ItemData> _loadInfo = _SaveLoadSystem.Load();
+
+        if (_loadInfo != null && _loadInfo.Count > 0)itemsData = _loadInfo;
+        else _SaveLoadSystem.Save(itemsData);
 
         for (int i = 0; i < itemsData.Count; i++)
-        {
-            if (_saveData != null)
-            {
-                for (int j = 0; j < _saveData.type.Count; j++)
-                    _loadInfo = new ItemData() { itemType = (ItemTypes)_saveData.type[i], itemCount = _saveData.count[i] };
-
-                if (itemsData[i].itemType == _loadInfo.itemType)
-                    itemsData[i].itemCount = _loadInfo.itemCount;
-            }
-            else itemsData[i].itemCount = 0;
-
             _UIController.UpdateDataPanel(itemsData[i].itemType, itemsData[i].itemCount);
-        }
     }
 }
 [System.Serializable] public class ItemData

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -15,24 +16,41 @@ public class SaveLoadSystem : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(_data, false);
-
-        if (!File.Exists(Application.persistentDataPath + "/Data.json")) File.Create(Application.persistentDataPath + "/Data.json");
-
         File.WriteAllText(Application.persistentDataPath + "/Data.json", json);
     }
 
-    public SaveData Load()
+    public List<ItemData> Load()
     {
-        if (!File.Exists(Application.persistentDataPath + "/Data.json"))
-        {
-            File.Create(Application.persistentDataPath + "/Data.json");
-            return null;
-        }
+        if (!Exist()) return null;
 
         string json = File.ReadAllText(Application.persistentDataPath + "/Data.json");
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
 
-        return data;
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        List<ItemData> _loadInfo = new List<ItemData>();
+
+        for (int i = 0; i < data.type.Count; i++)
+        {
+            _loadInfo.Add(new ItemData()
+            {
+                itemCount = data.count[i],
+                itemType = (DataController.ItemTypes)data.type[i]
+            });
+        }
+
+        return _loadInfo;
+    }
+
+    private bool Exist()
+    {
+        if (!File.Exists(Application.persistentDataPath + "/Data.json") ||
+            File.ReadAllText(Application.persistentDataPath + "/Data.json").Length <= 0)
+        {
+            FileStream fileStream = File.Create(Application.persistentDataPath + "/Data.json");
+            fileStream.Close();
+            return false;
+        }
+
+        return true;
     }
 }
 
