@@ -5,27 +5,27 @@ public class FpsCounter : MonoBehaviour
 {
     public int AverageFPS { get; private set; }
 
-    public string title;
+    public string Title;
     public TMP_Text TextFps;
 
-    private string[] _stringsFromFps;
+    private string[] stringsFromFps;
 
-    private int _frameRange = 60;
+    private int frameRange = 60;
 
-    private int[] _fpsBuffer;
-    private int _fpsBufferIndex;
-    private int _maxFps;
+    private int[] fpsBuffer;
+    private int fpsBufferIndex;
+    private int maxFps;
 
     private void Start()
     {
-        if (_fpsBuffer == null || _frameRange != _fpsBuffer.Length)
+        if (fpsBuffer == null || frameRange != fpsBuffer.Length)
             InitializeBuffer();
 
-        _stringsFromFps = new string[1000];
-        for (int i = 0; i < _stringsFromFps.Length; i++)
-            _stringsFromFps[i] = i.ToString();
+        stringsFromFps = new string[1000];
+        for (int i = 0; i < stringsFromFps.Length; i++)
+            stringsFromFps[i] = i.ToString();
 
-        _maxFps = _stringsFromFps.Length - 1;
+        maxFps = stringsFromFps.Length - 1;
     }
 
     private void Update()
@@ -33,36 +33,36 @@ public class FpsCounter : MonoBehaviour
         UpdateBuffer();
         CalculateFps();
 
-        TextFps.text = $"{title}\n{_stringsFromFps[Mathf.Clamp(AverageFPS, 0, _maxFps)]}";
+        TextFps.text = $"{Title}\n{stringsFromFps[Mathf.Clamp(AverageFPS, 0, maxFps)]}";
     }
 
     private void InitializeBuffer()
     {
-        if (_frameRange <= 0) _frameRange = 1;
+        if (frameRange <= 0) frameRange = 1;
 
-        _fpsBuffer = new int[_frameRange];
-        _fpsBufferIndex = 0;
+        fpsBuffer = new int[frameRange];
+        fpsBufferIndex = 0;
     }
 
     private void UpdateBuffer()
     {
-        _fpsBuffer[_fpsBufferIndex] = (int)(1f / Time.unscaledDeltaTime);
+        fpsBuffer[fpsBufferIndex] = (int)(1f / Time.unscaledDeltaTime);
 
-        _fpsBufferIndex++;
+        fpsBufferIndex++;
 
-        if (_fpsBufferIndex >= _frameRange) _fpsBufferIndex = 0;
+        if (fpsBufferIndex >= frameRange) fpsBufferIndex = 0;
     }
 
     private void CalculateFps()
     {
-        int sum = 0;
+        int _sum = 0;
 
-        for (int i = 0; i < _frameRange; i++)
+        for (int i = 0; i < frameRange; i++)
         {
-            int fps = _fpsBuffer[i];
-            sum += fps;
+            int _fps = fpsBuffer[i];
+            _sum += _fps;
         }
 
-        AverageFPS = sum / _frameRange;
+        AverageFPS = _sum / frameRange;
     }
 }

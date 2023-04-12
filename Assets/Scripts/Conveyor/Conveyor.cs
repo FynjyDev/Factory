@@ -6,18 +6,18 @@ public class Conveyor : MonoBehaviour
 {
     public SingletonController singletonController => SingletonController.singletonController;
 
-    public ItemMoving itemPrefab;
-    public List<PathPoint> convoyerPathPoints;
+    [SerializeField] private ItemMoving itemPrefab;
+    [SerializeField] private List<PathPoint> convoyerPathPoints;
     public List<ItemMoving> activeItems;
 
-    private float _BasicSpawnDelay => singletonController.config.basicConveyorSpawnDelay;
+    private float basicSpawnDelay => singletonController.Config.BasicConveyorSpawnDelay;
 
     public virtual IEnumerator Working()
     {
         while (true)
         {
             SpawnItem();
-            yield return new WaitForSeconds(_BasicSpawnDelay);
+            yield return new WaitForSeconds(basicSpawnDelay);
         }
     }
 
@@ -26,7 +26,7 @@ public class Conveyor : MonoBehaviour
         ItemMoving _newItem = Instantiate(itemPrefab, convoyerPathPoints[0].transform.position, Quaternion.identity);
         _newItem.convoyerPathPoints = convoyerPathPoints;
 
-        _newItem.itemCollision.conveyor = this;
+        _newItem.itemCollision.Conveyor = this;
 
         activeItems.Add(_newItem);
     }

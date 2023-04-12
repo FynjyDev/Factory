@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class DeliverySpot : ItemsChanger
 {
-    public Slider deliveryTimeSlider;
-    public InteractPoint interactPoint;
-    public Animator deliverySpotAnimator;
+    [SerializeField] private Slider deliveryTimeSlider;
+    [SerializeField] private Stack deliverySpotStack;
+    [SerializeField] private InteractPoint interactPoint;
+    [SerializeField] private Animator deliverySpotAnimator;
 
-    private int _MaxItemsCount => SingletonController.singletonController.config.maxItemsCount;
-    private int _DeliveryDelay => SingletonController.singletonController.config.deliveryDelay;
+    private int maxItemsCount => SingletonController.singletonController.Config.MaxItemsCount;
+    private int deliveryDelay => SingletonController.singletonController.Config.DeliveryDelay;
 
     public override void OnInteractStart()
     {
-        if (tempItemCount >= _MaxItemsCount) return;
+        if (TempItemCount >= maxItemsCount) return;
         base.OnInteractStart();
     }
 
@@ -21,7 +22,9 @@ public class DeliverySpot : ItemsChanger
     {
         base.OnChange();
 
-        if (tempItemCount == _MaxItemsCount)
+        deliverySpotStack.AddElement();
+
+        if (TempItemCount == maxItemsCount)
         {
             StopAllCoroutines();
             StartCoroutine(DeliverTimer());
@@ -35,11 +38,11 @@ public class DeliverySpot : ItemsChanger
         interactPoint.gameObject.SetActive(false);
         deliverySpotAnimator.SetTrigger("Start");
 
-        deliveryTimeSlider.maxValue = _DeliveryDelay;
+        deliveryTimeSlider.maxValue = deliveryDelay;
 
         float _deliveryDelayTemp = 0;
 
-        while (_deliveryDelayTemp < _DeliveryDelay)
+        while (_deliveryDelayTemp < deliveryDelay)
         {
             deliveryTimeSlider.value = _deliveryDelayTemp;
             _deliveryDelayTemp += Time.fixedDeltaTime;
@@ -47,6 +50,7 @@ public class DeliverySpot : ItemsChanger
         }
 
         deliverySpotAnimator.SetTrigger("End");
+        deliverySpotStack.ClearStack();
     }
 
     public void DeliveryAnimatioEnd()
@@ -59,13 +63,13 @@ public class DeliverySpot : ItemsChanger
         deliveryTimeSlider.gameObject.SetActive(false);
         interactPoint.gameObject.SetActive(true);
 
-        tempItemCount = 0;
+        TempItemCount = 0;
         StopAllCoroutines();
     }
 
     public override void OnInteractEnd()
     {
-        if (tempItemCount >= _MaxItemsCount) return;
+        if (TempItemCount >= maxItemsCount) return;
         base.OnInteractEnd();
     }
 }

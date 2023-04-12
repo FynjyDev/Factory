@@ -375,6 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4038400512800218591}
   - component: {fileID: 6752632224516374674}
+  - component: {fileID: 3498759876584532730}
   - component: {fileID: 2919163607849991657}
   m_Layer: 0
   m_Name: Delivery Spot
@@ -413,12 +414,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0fcf052035d84418825a47a8128d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  takeItemType: 0
-  giveItemType: 1
-  tempItemCount: 0
+  TakeItemType: 0
+  GiveItemType: 1
+  TempItemCount: 0
   deliveryTimeSlider: {fileID: 9132240433235660712}
+  deliverySpotStack: {fileID: 3498759876584532730}
   interactPoint: {fileID: 2040240781276571407}
   deliverySpotAnimator: {fileID: 2919163607849991657}
+--- !u!114 &3498759876584532730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038400512800218588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2993d4cf84282d444afd92d4d188c27f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stratPos: {fileID: 3774137078029399918}
+  stackPrefab: {fileID: 1653942539345882115, guid: bfa4e50f814247549ba6f0cffcbb8d30, type: 3}
+  xStep: 0.6
+  yStep: 0.8
+  zStep: 0.6
+  xMaxCount: 3
+  zMaxCount: 3
+  StackObjects: []
 --- !u!95 &2919163607849991657
 Animator:
   serializedVersion: 4
@@ -1166,6 +1188,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4038400513584540642}
     m_Modifications:
+    - target: {fileID: 894855627506340566, guid: 6f3113348f6eff9438c2df5ecbe106fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.878
+      objectReference: {fileID: 0}
     - target: {fileID: 5818641892855540683, guid: 6f3113348f6eff9438c2df5ecbe106fc, type: 3}
       propertyPath: m_Name
       value: Truck
@@ -1216,6 +1242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f3113348f6eff9438c2df5ecbe106fc, type: 3}
+--- !u!4 &3774137078029399918 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 894855627506340566, guid: 6f3113348f6eff9438c2df5ecbe106fc, type: 3}
+  m_PrefabInstance: {fileID: 4038400512483452344}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7205584079590839497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6625964199949119857, guid: 6f3113348f6eff9438c2df5ecbe106fc, type: 3}

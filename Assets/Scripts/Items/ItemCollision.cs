@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class ItemCollision : MonoBehaviour, IInteractable
 {
-    [HideInInspector] public Conveyor conveyor;
-    public DataController.ItemTypes itemType;
-    public ItemMoving itemMoving;
+    [HideInInspector] public Conveyor Conveyor;
 
-    public void OnInteractEnd()
-    {
-    }
+    [SerializeField] private DataController.ItemTypes itemType;
+    [SerializeField] private ItemMoving itemMoving;
+
+    public void OnInteractEnd() { }
 
     public void OnInteractStart()
     {
@@ -17,8 +16,8 @@ public class ItemCollision : MonoBehaviour, IInteractable
 
     public void OnCollect()
     {
-        itemMoving.singletonController.dataController.ChangeItemData(itemType, 1);
-        conveyor.activeItems.Remove(itemMoving);
+        itemMoving.singletonController.DataController.ChangeItemData(itemType, 1);
+        Conveyor.activeItems.Remove(itemMoving);
         Destroy(gameObject);
     }
 }

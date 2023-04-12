@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AutomaticConveyor : Conveyor
 {
-    private float _AutomaticConveyorSpawnDelay => singletonController.config.automaticConveyorSpawnDelay;
+    private float automaticConveyorSpawnDelay => singletonController.Config.AutomaticConveyorSpawnDelay;
 
     private void Start()
     {
@@ -16,7 +15,7 @@ public class AutomaticConveyor : Conveyor
         while (true)
         {
             SpawnItem();
-            yield return new WaitForSeconds(_AutomaticConveyorSpawnDelay);
+            yield return new WaitForSeconds(automaticConveyorSpawnDelay);
         }
     }
 

@@ -6,25 +6,25 @@ public class Config : ScriptableObject
     public enum ChangerStates { take, give, disabled }
 
     [Header("Character Pharameters")]
-    public float characterMoveSpeed;
-    public float characterRotateSpeed;
+    [Range(1,10)] public float CharacterMoveSpeed;
+    [Range(0.1f, 1)] public float CharacterRotateSpeed;
 
     [Header("Item Changer Pharameters")]
-    public float changeDelay;
+    [Range(1, 5)] public float ChangeDelay;
 
     [Header("Delivery Spot Pharameters")]
-    public int maxItemsCount;
-    public int deliveryDelay;
+    [Range(5, 50)] public int MaxItemsCount;
+    [Range(10, 20)] public int DeliveryDelay;
 
     [Header("Basic Conveyor Pharameters")]
-    public float basicConveyorSpawnDelay;
+    [Range(1, 5)] public float BasicConveyorSpawnDelay;
 
     [Header("Automatic Conveyor Pharameters")]
-    public float automaticConveyorSpawnDelay;
+    [Range(1, 5)] public float AutomaticConveyorSpawnDelay;
 
     [Header("Manual Conveyor Pharameters")]
-    public float manualConveyorSpawnDelay;
+    [Range(1, 5)] public float ManualConveyorSpawnDelay;
 
     [Header("Item Pharameters")]
-    public float moveSpeed;
+    [Range(2, 5)] public float MoveSpeed;
 }

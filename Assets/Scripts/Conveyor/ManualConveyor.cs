@@ -3,21 +3,21 @@ using UnityEngine;
 
 public class ManualConveyor : Conveyor, IInteractable
 {
-    private float _ManualConveyorSpawnDelay => singletonController.config.manualConveyorSpawnDelay;
-    private float _TempSpawnTime;
+    private float manualConveyorSpawnDelay => singletonController.Config.ManualConveyorSpawnDelay;
+    private float tempSpawnTime;
 
     private void Start()
     {
-        _TempSpawnTime = _ManualConveyorSpawnDelay;
+        tempSpawnTime = manualConveyorSpawnDelay;
     }
 
     public override IEnumerator Working()
     {
         while (true)
         {
-            while (_TempSpawnTime > 0)
+            while (tempSpawnTime > 0)
             {
-                _TempSpawnTime -= Time.fixedDeltaTime;
+                tempSpawnTime -= Time.fixedDeltaTime;
                 yield return null;
             }
             SpawnItem();
@@ -27,7 +27,7 @@ public class ManualConveyor : Conveyor, IInteractable
     public override void SpawnItem()
     {
         base.SpawnItem();
-        _TempSpawnTime = _ManualConveyorSpawnDelay;
+        tempSpawnTime = manualConveyorSpawnDelay;
     }
 
     public void OnInteractStart()

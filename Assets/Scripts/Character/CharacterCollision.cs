@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterCollision : MonoBehaviour
 {
-    public IInteractable activeInteractableObject;
+    [SerializeField] private IInteractable activeInteractableObject;
+
     private void OnTriggerEnter(Collider other)
     {
         activeInteractableObject = other.GetComponent<IInteractable>();

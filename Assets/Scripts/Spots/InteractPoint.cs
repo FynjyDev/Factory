@@ -2,36 +2,36 @@ using UnityEngine;
 
 public class InteractPoint : MonoBehaviour
 {
-    [HideInInspector] public CharacterCollision characterCollision;
+    [HideInInspector] public CharacterCollision CharacterCollision;
 
-    public GameObject interactableObject;
-    public bool isInteractable;
+    [SerializeField] private GameObject interactableObject;
+    [SerializeField] private bool isInteractable;
 
-    private IInteractable _Interactable;
+    private IInteractable interactable;
 
     private void Start()
     {
-        if (interactableObject) _Interactable = interactableObject.GetComponentInParent<IInteractable>();
+        if (interactableObject) interactable = interactableObject.GetComponentInParent<IInteractable>();
         else Debug.Log($"interactableObject is null: {transform.parent.name}");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        characterCollision = other.GetComponent<CharacterCollision>();
-        if (characterCollision == null) return;
+        CharacterCollision = other.GetComponent<CharacterCollision>();
+        if (CharacterCollision == null) return;
 
         if (interactableObject)
-        _Interactable.OnInteractStart();
+        interactable.OnInteractStart();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        characterCollision = other.GetComponent<CharacterCollision>();
+        CharacterCollision = other.GetComponent<CharacterCollision>();
 
-        if (characterCollision != null) characterCollision = null;
+        if (CharacterCollision != null) CharacterCollision = null;
         else return;
 
         if (interactableObject)
-            _Interactable.OnInteractEnd();
+            interactable.OnInteractEnd();
     }
 }

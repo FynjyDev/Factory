@@ -11,29 +11,29 @@ public class SaveLoadSystem : MonoBehaviour
 
         for (int i = 0; i < _itemData.Count; i++)
         {
-            _data.type.Add((int)_itemData[i].itemType);
-            _data.count.Add(_itemData[i].itemCount);
+            _data.Type.Add((int)_itemData[i].itemType);
+            _data.Count.Add(_itemData[i].itemCount);
         }
 
-        string json = JsonUtility.ToJson(_data, false);
-        File.WriteAllText(Application.persistentDataPath + "/Data.json", json);
+        string _json = JsonUtility.ToJson(_data, false);
+        File.WriteAllText(Application.persistentDataPath + "/Data.json", _json);
     }
 
     public List<ItemData> Load()
     {
         if (!Exist()) return null;
 
-        string json = File.ReadAllText(Application.persistentDataPath + "/Data.json");
+        string _json = File.ReadAllText(Application.persistentDataPath + "/Data.json");
 
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        SaveData _data = JsonUtility.FromJson<SaveData>(_json);
         List<ItemData> _loadInfo = new List<ItemData>();
 
-        for (int i = 0; i < data.type.Count; i++)
+        for (int i = 0; i < _data.Type.Count; i++)
         {
             _loadInfo.Add(new ItemData()
             {
-                itemCount = data.count[i],
-                itemType = (DataController.ItemTypes)data.type[i]
+                itemCount = _data.Count[i],
+                itemType = (DataController.ItemTypes)_data.Type[i]
             });
         }
 
@@ -45,8 +45,8 @@ public class SaveLoadSystem : MonoBehaviour
         if (!File.Exists(Application.persistentDataPath + "/Data.json") ||
             File.ReadAllText(Application.persistentDataPath + "/Data.json").Length <= 0)
         {
-            FileStream fileStream = File.Create(Application.persistentDataPath + "/Data.json");
-            fileStream.Close();
+            FileStream _fs = File.Create(Application.persistentDataPath + "/Data.json");
+            _fs.Close();
             return false;
         }
 
@@ -56,6 +56,6 @@ public class SaveLoadSystem : MonoBehaviour
 
 public class SaveData
 {
-    public List<int> type = new List<int>();
-    public List<int> count = new List<int>();
+    public List<int> Type = new List<int>();
+    public List<int> Count = new List<int>();
 }

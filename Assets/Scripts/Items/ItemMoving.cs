@@ -4,41 +4,43 @@ using UnityEngine;
 public class ItemMoving : MonoBehaviour
 {
     public SingletonController singletonController => SingletonController.singletonController;
-    [HideInInspector] public List<PathPoint> convoyerPathPoints;
 
     public ItemCollision itemCollision;
-    public DestroyTimer destroyTimer;
-    public Rigidbody itemBody;
 
-    public bool isMovingEnd;
+    [HideInInspector] public List<PathPoint> convoyerPathPoints;
 
-    private Transform _ItemTr;
-    private float _MinDistanceToPoint;
-    private int _TempPointIndex;
+    [SerializeField] private DestroyTimer destroyTimer;
+    [SerializeField] private Rigidbody itemBody;
 
-    private float _MoveSpeed => singletonController.config.moveSpeed;
+    [SerializeField] private bool isMovingEnd;
+
+    private Transform itemTr;
+    private float minDistanceToPoint;
+    private int tempPointIndex;
+
+    private float _MoveSpeed => singletonController.Config.MoveSpeed;
 
     private void FixedUpdate()
     {
-        if (!_ItemTr) _ItemTr = transform;
+        if (!itemTr) itemTr = transform;
         if (!isMovingEnd) Move();
     }
 
     private void Move()
     {
-        if (_TempPointIndex >= convoyerPathPoints.Count) OnPathEnd();
+        if (tempPointIndex >= convoyerPathPoints.Count) OnPathEnd();
         else
         {
-            _ItemTr.position = Vector3.MoveTowards(transform.position, convoyerPathPoints[_TempPointIndex].transform.position, _MoveSpeed * Time.deltaTime);
+            itemTr.position = Vector3.MoveTowards(transform.position, convoyerPathPoints[tempPointIndex].transform.position, _MoveSpeed * Time.deltaTime);
 
-            float _distanceToPoint = (_ItemTr.position - convoyerPathPoints[_TempPointIndex].transform.position).sqrMagnitude;
-            if (_distanceToPoint <= _MinDistanceToPoint) _TempPointIndex++;
+            float _distanceToPoint = (itemTr.position - convoyerPathPoints[tempPointIndex].transform.position).sqrMagnitude;
+            if (_distanceToPoint <= minDistanceToPoint) tempPointIndex++;
         }
     }
 
     private void OnPathEnd()
     {
-        itemCollision.conveyor.OnItemEndPath(this);
+        itemCollision.Conveyor.OnItemEndPath(this);
 
         isMovingEnd = true;
         itemBody.isKinematic = false;

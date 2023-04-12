@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450ddde78d7a7614986bdf53ae2f5487, type: 3}
   m_Name: Config
   m_EditorClassIdentifier: 
-  characterMoveSpeed: 4.5
-  characterRotateSpeed: 0.2
-  changeDelay: 1
-  maxItemsCount: 10
-  deliveryDelay: 10
-  basicConveyorSpawnDelay: 2
-  automaticConveyorSpawnDelay: 6
-  manualConveyorSpawnDelay: 3
-  moveSpeed: 1
+  CharacterMoveSpeed: 5
+  CharacterRotateSpeed: 0.5
+  ChangeDelay: 2
+  MaxItemsCount: 9
+  DeliveryDelay: 10
+  BasicConveyorSpawnDelay: 1
+  AutomaticConveyorSpawnDelay: 5
+  ManualConveyorSpawnDelay: 3
+  MoveSpeed: 2

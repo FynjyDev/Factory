@@ -4,14 +4,14 @@ public class CharacterMovement : MonoBehaviour
 {
     private SingletonController singletonController => SingletonController.singletonController;
 
-    public Animator characterAnimator;
-    public Transform characterTr;
-    public Rigidbody characterBody;
+    [SerializeField] private Animator characterAnimator;
+    [SerializeField] private Transform characterTr;
+    [SerializeField] private Rigidbody characterBody;
 
-    private Vector3 _InputVector;
-    public Joystick joystick => singletonController.UIController.characterJoystick;
-    private float _MoveSpeed => singletonController.config.characterMoveSpeed;
-    private float _RotateSpeed => singletonController.config.characterRotateSpeed;
+    private Vector3 inputVector;
+    public Joystick Joystick => singletonController.UIController.CharacterJoystick;
+    private float moveSpeed => singletonController.Config.CharacterMoveSpeed;
+    private float rotateSpeed => singletonController.Config.CharacterRotateSpeed;
 
     private void FixedUpdate()
     {
@@ -21,18 +21,18 @@ public class CharacterMovement : MonoBehaviour
 
     private void CharacterMove()
     {
-        _InputVector.x = joystick.Horizontal;
-        _InputVector.z = joystick.Vertical;
+        inputVector.x = Joystick.Horizontal;
+        inputVector.z = Joystick.Vertical;
 
-        characterBody.velocity = _InputVector * _MoveSpeed;
-        characterAnimator.SetBool("IsRun", _InputVector != Vector3.zero);
+        characterBody.velocity = inputVector * moveSpeed;
+        characterAnimator.SetBool("IsRun", inputVector != Vector3.zero);
     }
 
     private void CharacterRotate()
     {
-        if (_InputVector == Vector3.zero) return;
+        if (inputVector == Vector3.zero) return;
 
         characterTr.rotation = Quaternion.Lerp(characterTr.rotation, 
-            Quaternion.LookRotation(new Vector3(_InputVector.x, 0, _InputVector.z)), _RotateSpeed);
+            Quaternion.LookRotation(new Vector3(inputVector.x, 0, inputVector.z)), rotateSpeed);
     }
 }

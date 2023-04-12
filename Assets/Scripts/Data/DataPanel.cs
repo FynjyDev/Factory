@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class DataPanel : MonoBehaviour
 {
-    public DataController.ItemTypes itemType;
-    public TextMeshProUGUI itemCountText;
+    public DataController.ItemTypes ItemType;
+    public TextMeshProUGUI ItemCountText;
 }
